@@ -1,0 +1,1 @@
+Após baixar o código-fonte, entre na pasta `back-end` e execute o comando `npm install --no-bin-links`.
