@@ -61,6 +61,30 @@ module.exports = function() {
 
    }
 
+   controller.novo = function(req, res) {
+      var dados = req.body;
+
+      console.log(dados); // Debug
+
+      if(! dados._id) {
+         // HTTP 400: Bad request
+         res.status(400).send('O _id deve ser informado').end();
+      }
+
+      var novoContato = {};
+
+      novoContato._id = dados._id;
+      novoContato.nome = dados.nome;
+      novoContato.email = dados.email;
+
+      // Insere o novo contato no final do vetor de contatos
+      contatos.push(novoContato);
+
+      // HTTP 201: Created
+      res.status(201).end();
+
+   }
+
    return controller;
 
 }

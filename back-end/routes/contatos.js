@@ -6,4 +6,6 @@ router.get('/', controller().listar);
 
 router.get('/:id', controller().obterUm);
 
+router.put('/', controller().novo);
+
 module.exports = router;
