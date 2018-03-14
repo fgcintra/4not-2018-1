@@ -85,6 +85,68 @@ module.exports = function() {
 
    }
 
+   controller.alterar = function(req, res) {
+      
+      var idContato = req.params.id;
+
+      // Se o id não foi passado, retornamos erro
+      if(! idContato) {
+         // HTTP 400: Bad request
+         res.status(400).end();
+      }
+
+      // Procuramos pelo contato do id passado no vetor de contatos
+      var pos = contatos.findIndex(function(contato) {
+         return contato._id == idContato;
+      });
+
+      // Se pos for menor que zero, significa que não existe contato
+      // com o id passado
+      if(pos < 0) {
+         // HTTP 404: Not found
+         res.status(404).send('Contato não encontrado.').end();
+      }
+
+      // Fazemos a alteração do contato encontrado com os dados provenientes
+      // de req.body
+      contatos[pos].nome = req.body.nome;
+      contatos[pos].email = req.body.email;
+
+      // HTTP 204: No content
+      res.status(204).end();
+
+   }
+
+   controller.excluir = function(req, res) {
+
+      var idContato = req.params.id;
+
+      // id não passado
+      if(! idContato) {
+         res.status(400).end(); // Bad request
+      }
+
+      // Filtra o vetor de contatos, gerando um novo vetor
+      // com os contatos que NÃO foram excluídos
+      var remanescentes = contatos.filter(function(contato) {
+         return contato._id != idContato;
+      });
+
+      // Se os dois vetores (contatos e remanescentes) tiverem o
+      // mesmo número de elementos, significa que o id passado não
+      // corresponde a um id válido existente
+      if(contatos.length == remanescentes.length) {
+         res.status(404).end(); // Not found
+      }
+
+      // Sobrescrevemos o vetor contatos com o vetor remanescentes,
+      // excluindo, dessa forma, o contato solicitado
+      contatos = remanescentes;
+
+      res.status(204).end(); // No content
+
+   }
+
    return controller;
 
 }
