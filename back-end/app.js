@@ -6,6 +6,34 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 /* acrescentado 10/03 */ var methodOverride = require('method-override');
+var mongoose = require('mongoose');
+
+var db = 'mongodb://localhost/estoque';
+
+// Conecta-se ao MongoDb
+mongoose.connect(db);
+
+// Eventos do banco de dados
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose! conectado a ' + db);
+});
+
+mongoose.connection.on('disconnected', function() {
+  console.log('Mongoose! desconectado de' + db);
+});
+
+mongoose.connection.on('error', function(erro) {
+  console.log('Mongoose! Erro de conexão: ' + erro);
+});
+
+// Fecha a conexão em caso de término por Ctrl+C (SIGINT)
+process.on('SIGINT', function() {
+  mongoose.connection.close(function() {
+    console.log('Mongoose! Sinal SIGINT recebido; desconectado.');
+    // 0 indica que a finalização ocorreu sem erros
+    process.exit(0);
+  });
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');

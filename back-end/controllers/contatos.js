@@ -28,6 +28,8 @@ var contatos = [
 
 module.exports = function() {
 
+   var x = undefined;
+
    controller = {}; // Objeto vazio
 
    controller.listar = function(req, res) {
