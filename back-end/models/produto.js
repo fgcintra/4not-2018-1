@@ -14,7 +14,7 @@ module.exports = function () {
          type: String
       },
       preco: {
-         type: mongoose.SchemaTypes.Decimal128,
+         type: Number,
          required: true
       },
       data_validade: {
