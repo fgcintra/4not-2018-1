@@ -19,6 +19,11 @@ module.exports = function () {
       },
       data_validade: {
          type: Date
+      },
+      categoria: {
+         type: mongoose.SchemaTypes.ObjectId,
+         ref: 'Categoria',
+         required: true
       }
    });
 

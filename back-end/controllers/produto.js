@@ -5,7 +5,7 @@ module.exports = function() {
    controller = {};
 
    controller.listar = function(req, res) {
-      Produto.find().exec().then(
+      Produto.find().populate('categoria').exec().then(
          // Callback se der certo
          function(produtos) {
             res.json(produtos).end();
