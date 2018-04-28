@@ -2,5 +2,9 @@
 
 #sudo npm install -g @angular/cli
 
-cd ..
-ng new front-end
+#cd ..
+#ng new front-end
+
+#ng generate service produto/produto
+#ng generate component produto/produto-list
+ng generate module app-routing --flat --module=app
