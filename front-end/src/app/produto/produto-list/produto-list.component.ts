@@ -14,12 +14,8 @@ export class ProdutoListComponent implements OnInit {
 
   ngOnInit() {
     this.ps.listar().subscribe(
-      function(dados) { // Callback se der certo
-        return this.produtos = dados;
-      },
-      function(erro) {
-        console.log(erro);
-      }
+      dados => this.produtos = dados, // Callback se der certo
+      erro => console.error(erro)
     );
   }
 

@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 /* acrescentado 10/03 */ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
@@ -43,6 +44,8 @@ var produto = require('./routes/produto');
 var categoria = require('./routes/categoria');
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

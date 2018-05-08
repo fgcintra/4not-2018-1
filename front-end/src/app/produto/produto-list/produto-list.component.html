@@ -1,3 +1,18 @@
-<p>
-  {{produtos | json}}
-</p>
+<h2>Listagem de Produtos</h2>
+
+<table class="table table-responsive table-hover table-striped">
+  <tr>
+    <th>Descrição</th>
+    <th>Marca</th>
+    <th>Categoria</th>
+    <th>Preço</th>
+    <th>Data de validade</th>
+  </tr>
+  <tr *ngFor="let p of produtos">
+    <td>{{p.descricao}}</td>
+    <td>{{p.marca}}</td>
+    <td>{{p.categoria.descricao}}</td>
+    <td>{{p.preco}}</td>
+    <td>{{p.data_validade}}</td>
+  </tr>
+</table>
