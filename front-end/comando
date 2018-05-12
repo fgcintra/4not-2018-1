@@ -7,4 +7,7 @@
 
 #ng generate service produto/produto
 #ng generate component produto/produto-list
-ng generate module app-routing --flat --module=app
+#ng generate module app-routing --flat --module=app
+
+ng g s categoria/categoria
+ng g c categoria/categoria-list
