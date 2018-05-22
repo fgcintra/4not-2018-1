@@ -9,5 +9,7 @@
 #ng generate component produto/produto-list
 #ng generate module app-routing --flat --module=app
 
-ng g s categoria/categoria
-ng g c categoria/categoria-list
+#ng g s categoria/categoria
+#ng g c categoria/categoria-list
+
+ng g c produto/produto-form

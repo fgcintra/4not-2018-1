@@ -9,7 +9,7 @@
     <th>Data de validade</th>
   </tr>
   <tr *ngFor="let p of produtos">
-    <td>{{p.descricao}}</td>
+    <td><a [routerLink]="['/produto', p._id]">{{p.descricao}}</a></td>
     <td>{{p.marca}}</td>
     <td>{{p.categoria.descricao}}</td>
     <td>{{p.preco}}</td>

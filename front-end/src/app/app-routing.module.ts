@@ -4,11 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProdutoListComponent } from './produto/produto-list/produto-list.component';
 import { CategoriaListComponent } from './categoria/categoria-list/categoria-list.component';
+import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
 
 const routes: Routes = [
   {
     path: 'produto',
     component: ProdutoListComponent
+  },
+  {
+    path: 'produto/:id',
+    component: ProdutoFormComponent
   },
   {
     path: 'categoria',
