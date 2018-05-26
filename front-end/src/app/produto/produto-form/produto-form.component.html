@@ -12,4 +12,27 @@
     <input type="text" class="form-control" id="marca" name="marca" [(ngModel)]="produto.marca" />
   </div>
 
+  <div class="form-group">
+    <label for="preco">Preço</label>
+    <input type="number" class="form-control" id="preco" name="preco" required step="0.01" [(ngModel)]="produto.preco" />
+  </div>
+
+  <div class="form-group">
+    <label for="data_validade">Data de validade</label>
+    <input type="date" class="form-control" id="data_validade" name="data_validade" [(ngModel)]="produto.data_validade" />
+  </div>
+
+  <div class="form-group">
+    <label for="categoria">Categoria</label>
+    <select class="form-control" id="categoria" name="categoria" required [(ngModel)]="produto.categoria">
+      <option *ngFor="let c of categorias" [ngValue]="c._id">
+        {{c.descricao}}
+      </option>
+    </select>
+  </div>
+
+  <div class="text-center">
+    <input type="submit" class="btn btn-primary" value="Enviar" />
+  </div>
+
 </form>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 // Classe espelho do model do back-end
 export class Produto {
+  public _id: String;
   public descricao: String;
   public marca?: String;
   public cod_barras?: String; // ? = valor opcional
@@ -22,6 +23,12 @@ export class ProdutoService {
 
   obterUm(id: String) {
     return this.http.get('http://localhost:3000/produto/' + id);
+  }
+
+  salvar(p: Produto) {
+    if (p._id) {
+      return this.http.post('http://localhost:3000/produto/' + p._id, p);
+    }
   }
 
 }

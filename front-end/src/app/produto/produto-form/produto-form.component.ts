@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutoService, Produto } from '../produto.service';
+import { CategoriaService } from '../../categoria/categoria.service';
 
 @Component({
   selector: 'app-produto-form',
   templateUrl: './produto-form.component.html',
   styleUrls: ['./produto-form.component.css'],
-  providers: [ProdutoService]
+  providers: [ProdutoService, CategoriaService]
 })
 export class ProdutoFormComponent implements OnInit {
 
   public produto: Produto = new Produto();
+  public categorias: any = [];
 
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private ps: ProdutoService
+    private ps: ProdutoService,
+    private cs: CategoriaService
   ) { }
 
   ngOnInit() {
@@ -31,10 +34,22 @@ export class ProdutoFormComponent implements OnInit {
         }
       }
     );
+
+    this.cs.listar().subscribe(
+      dados => this.categorias = dados,
+      erro => console.error(erro)
+    );
+
   }
 
   enviar(form) {
-    //
+    // console.log(this.produto);
+
+    this.ps.salvar(this.produto).subscribe(
+      () => alert('Produto salvo com sucesso.'),
+      erro => alert('Ocorreu um erro:\n' + erro)
+    );
+
   }
 
 }
