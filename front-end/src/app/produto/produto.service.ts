@@ -28,6 +28,8 @@ export class ProdutoService {
   salvar(p: Produto) {
     if (p._id) {
       return this.http.post('http://localhost:3000/produto/' + p._id, p);
+    } else { // Produto novo
+      return this.http.put('http://localhost:3000/produto', p);
     }
   }
 

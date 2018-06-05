@@ -28,7 +28,10 @@ export class ProdutoFormComponent implements OnInit {
         // Se existir o parâmetro id
         if (params.id) {
           this.ps.obterUm(params.id).subscribe(
-            (dados: Produto) => this.produto = dados,
+            (dados: Produto) => {
+              this.produto = dados;
+              console.log(this.produto);
+            },
             erro => console.error(erro)
           );
         }
@@ -47,9 +50,13 @@ export class ProdutoFormComponent implements OnInit {
 
     this.ps.salvar(this.produto).subscribe(
       () => alert('Produto salvo com sucesso.'),
-      erro => alert('Ocorreu um erro:\n' + erro)
+      erro => {
+        alert('Ocorreu um erro:\n' + erro);
+        console.error(erro);
+      }
     );
 
   }
 
 }
+

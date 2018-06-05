@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../produto.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-produto-list',
@@ -10,6 +11,7 @@ import { ProdutoService } from '../produto.service';
 export class ProdutoListComponent implements OnInit {
 
   public produtos: any = {};
+  public mmt = moment;
   constructor(private ps: ProdutoService) { }
 
   ngOnInit() {
