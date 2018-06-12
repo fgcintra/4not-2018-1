@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutoService, Produto } from '../produto.service';
 import { CategoriaService } from '../../categoria/categoria.service';
 
+
 @Component({
   selector: 'app-produto-form',
   templateUrl: './produto-form.component.html',
@@ -30,7 +31,9 @@ export class ProdutoFormComponent implements OnInit {
           this.ps.obterUm(params.id).subscribe(
             (dados: Produto) => {
               this.produto = dados;
-              console.log(this.produto);
+              // Precisamos da data no formato yyyy-MM-dd. Basta pegar o início
+              // da string de data que vem do MongoDB
+              this.produto.data_validade = this.produto.data_validade.substring(0, 10);
             },
             erro => console.error(erro)
           );

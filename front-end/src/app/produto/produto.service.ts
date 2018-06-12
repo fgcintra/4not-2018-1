@@ -8,7 +8,7 @@ export class Produto {
   public marca?: String;
   public cod_barras?: String; // ? = valor opcional
   public preco: Number;
-  public data_validade?: Date;
+  public data_validade?: String;
   public categoria: String;   // ObjectId mapeia para String
 }
 
@@ -31,6 +31,10 @@ export class ProdutoService {
     } else { // Produto novo
       return this.http.put('http://localhost:3000/produto', p);
     }
+  }
+
+  excluir(id: String) {
+    return this.http.delete('http://localhost:3000/produto/' + id);
   }
 
 }

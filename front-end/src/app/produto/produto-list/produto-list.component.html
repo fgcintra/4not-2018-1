@@ -13,12 +13,16 @@
     <th>Categoria</th>
     <th>Preço</th>
     <th>Data de validade</th>
+    <th>EXCLUIR</th>
   </tr>
   <tr *ngFor="let p of produtos">
     <td><a [routerLink]="['/produto', p._id]">{{p.descricao}}</a></td>
     <td>{{p.marca}}</td>
     <td>{{p.categoria.descricao}}</td>
     <td>{{p.preco}}</td>
-    <td>{{p.data_validade}}</td>
+    <td>{{p.data_validade | date:'dd/MM/yyyy'}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="excluir(p._id)">Excluir</button>
+    </td>
   </tr>
 </table>
